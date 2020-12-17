@@ -1,29 +1,18 @@
-package br.queixas.spring02.dao;
+package br.queixas.spring02.dto;
 
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+@Getter @Setter
+public class ContaStatusDTO {
+    private String agente;
+    private int status;
+    private long count;
 
-import br.queixas.spring02.model.ContaStatus;
-
-@Repository
-public interface ContaStatusDAO extends CrudRepository<ContaStatus, Integer> {
-    /*
-     * @Query("SELECT t.status, COUNT(t.id_agente) FROM mtb310_transaction AS t WHERE WHERE t.id_agente = ?1 GROUP BY t.status ORDER BY t.status"
-     * ) List<Object[]> countTotalTransacoesByAgente(int idAgente);
-     */
-
-    @Query("SELECT new br.queixas.spring02.model.ContaStatus(t.agente.nomeAgente, t.status, COUNT(t.status)) "+
-        "FROM Transacoes AS t "+
-        "WHERE t.agente.idAgente = ?1 "+
-        "GROUP BY t.agente.nomeAgente, t.status "+
-        "ORDER By status")
-    List<ContaStatus> countStatusByAgent(int idAgente);
-
-/*     @Query("select t.status, count(*) as quantidade " + "from aula08.mtb310_transaction t "
-            + "where t.ag_financeiro=10 group by t.status " + "order by t.status")
-    List<ContaStatus> findContagemStatus(); */
-
+    public ContaStatusDTO(String agente, int status, long count) {
+        this.agente = agente;
+        this.status = status;
+        this.count = count;
+    }
+    
 }
