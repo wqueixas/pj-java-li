@@ -16,6 +16,8 @@ public interface AgenteDAO extends CrudRepository<Agente, Integer> {
 
     public List<Agente> findTop10ByOrderByVolumeTransacionalDesc();
 
+    public List<Agente> findByOrderByVolumeTransacionalDesc();
+
 
     
 }
