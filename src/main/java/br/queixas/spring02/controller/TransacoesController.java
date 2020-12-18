@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,14 +29,14 @@ public class TransacoesController {
 
 
     // métodos - pedidos usuários e devolver
-    @GetMapping("/all")
+    @PostMapping("/all")
     public List<Transacoes> listarTodos() {
         List<Transacoes> lista = (List<Transacoes>) dao.findAll();
         return lista;
      }
   
 
-     @GetMapping("/id/{id}") // nome da variável = {id}
+    @PostMapping("/id/{id}") // nome da variável = {id}
     public ResponseEntity<List<ContagemStatusDto>> contagemStatus(@PathVariable int id) { // igual ao nome acima - fazer correspondência
         // findbyid - retornar objeto
         // criar objeto "user" para receber
