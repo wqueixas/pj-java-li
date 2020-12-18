@@ -23,7 +23,7 @@ public class AgenteController {
     @Autowired //injecao de dependencia
     private AgenteDAO dao;
 
-/*     @GetMapping("/all")
+/*      @PostMapping("/all")
     public List<Agente> listarTodos() {
         List<Agente> listaUsers= (List<Agente>) dao.findAll();
         return listaUsers;
@@ -32,6 +32,19 @@ public class AgenteController {
     @PostMapping("/top10")
     public List<AgenteDTO> top10() {
         List<Agente> listaAgentes= (List<Agente>) dao.findTop10ByOrderByVolumeTransacionalDesc();
+        List<AgenteDTO> listaAgenteDTOs = new ArrayList<AgenteDTO>();
+        for (Agente agente : listaAgentes) {
+            AgenteDTO agdto = new AgenteDTO(agente);
+            listaAgenteDTOs.add(agdto);
+        }
+        return listaAgenteDTOs;
+    }
+
+    
+
+    @PostMapping("/lista")
+    public List<AgenteDTO> lista() {
+        List<Agente> listaAgentes= (List<Agente>) dao.findAllByOrderByIdAgente();
         List<AgenteDTO> listaAgenteDTOs = new ArrayList<AgenteDTO>();
         for (Agente agente : listaAgentes) {
             AgenteDTO agdto = new AgenteDTO(agente);

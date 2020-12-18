@@ -10,11 +10,12 @@ import br.queixas.spring02.model.Agente;
 //CRUD - Creat Read Update Delete
 public interface AgenteDAO extends CrudRepository<Agente, Integer> {
 
-    @Query(value="select a.id_agente, a.nome_agente, a.volume_transacional from mtb310_ag_financeiro a order by a.volume_transacional desc limit 10", 
+    @Query(value="select a.id_agente, a.nome_agente, a.volume_transacional from mtb310_ag_financeiro a order by a.volume_transacional desc", 
     nativeQuery = true)
     public List<Agente> listaPorVol();
 
     public List<Agente> findTop10ByOrderByVolumeTransacionalDesc();
+    public List<Agente> findAllByOrderByIdAgente();
 
 
     

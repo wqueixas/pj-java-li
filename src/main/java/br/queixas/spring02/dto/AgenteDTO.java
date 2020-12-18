@@ -4,10 +4,12 @@ import br.queixas.spring02.model.Agente;
 
 //Data Transfer Object
 public class AgenteDTO {
+    private Integer id;
     private String nome;
     private float volumeTransacional;
     
     public AgenteDTO(Agente agente) {
+        this.id = agente.getIdAgente();
         this.nome = agente.getNomeAgente();
         this.volumeTransacional = agente.getVolumeTransacional();
     }
@@ -23,5 +25,7 @@ public class AgenteDTO {
     public float getVolumeTransacional() {
         return volumeTransacional;
     }
-    
+    public Integer getId(){
+        return this.id;
+    }
 }
